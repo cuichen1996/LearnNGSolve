@@ -1,0 +1,69 @@
+
+<head>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://unpkg.com/sunburst-chart"></script>
+
+  <style>body { margin: 0 }</style>
+
+</head>
+<body>
+  <div id="chart"></div>
+
+  <script>
+    const data = 
+{ name: "all", calls: 1, size: 0, value: 20.48, min: 20.48, max: 20.48, avg: 20.48, children: [{ name: "ngcore::ParallelFor<int,ngcore::EnterTaskManager()::{lambda(int)#1}>(ngcore::T_Range<int>,ngcore::EnterTaskManager()::{lambda(int)#1},int,ngcore::TotalCosts)::{lambda(ngcore::TaskInfo&)#1}", calls: 1, size: 0.001766, value: 0.001766, min: 0.001766, max: 0.001766, avg: 0.001766} , { name: "MyAssemble - assemble matrix", calls: 1, size: 6.398, value: 15.31, min: 15.31, max: 15.31, avg: 15.31, children: [{ name: "MyAssemble - calc element matrix", calls: 14336, size: 8.91, value: 8.91, min: 0.000582, max: 0.008174, avg: 0.0006215}]} , { name: "MyAssemble - buildmatrixgraph", calls: 1, size: 1.809, value: 3.776, min: 3.776, max: 3.776, avg: 3.776, children: [{ name: "ngcore::TablePrefixSum2<unsigned int>(ngcore::FlatArray<unsigned int,unsigned long>)::{lambda(ngcore::TaskInfo)#1}", calls: 1, size: 0.004104, value: 0.004104, min: 0.004104, max: 0.004104, avg: 0.004104} , { name: "ngcore::TablePrefixSum2<unsigned int>(ngcore::FlatArray<unsigned int,unsigned long>)::{lambda(ngcore::TaskInfo)#2}", calls: 1, size: 0.006764, value: 0.006764, min: 0.006764, max: 0.006764, avg: 0.006764} , { name: "SparseMatrix::SetZero (taskhandler)", calls: 1, size: 0.000504, value: 0.09198, min: 0.09198, max: 0.09198, avg: 0.09198, children: [{ name: "ngcore::ParallelForRange<ngla::SparseMatrixTM<double>::SetZero()::{lambda(ngcore::T_Range<unsigned long>)#1}>(ngcore::Partitioning const&,ngla::SparseMatrixTM<double>::SetZero()::{lambda(ngcore::T_Range<unsigned long>)#1},int,ngcore::TotalCosts)::{lambda(ngcore::TaskInfo&)#1}", calls: 1, size: 0.09148, value: 0.09148, min: 0.09148, max: 0.09148, avg: 0.09148}]} , { name: "MatrixGraph", calls: 1, size: 0.02477, value: 1.864, min: 1.864, max: 1.864, avg: 1.864, children: [{ name: "ngcore::ParallelFor<unsigned long,ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(int)#1}>(ngcore::T_Range<unsigned long>,ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(int)#1},int,ngcore::TotalCosts)::{lambda(ngcore::TaskInfo&)#1}", calls: 1, size: 0.1011, value: 0.1011, min: 0.1011, max: 0.1011, avg: 0.1011} , { name: "ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(ngcore::TaskInfo)#3}", calls: 1, size: 0.004082, value: 0.004082, min: 0.004082, max: 0.004082, avg: 0.004082} , { name: "ngcore::ParallelForRange<int,ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(ngcore::T_Range<unsigned long>)#4}>(ngcore::T_Range<int>,ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(ngcore::T_Range<unsigned long>)#4},int,ngcore::TotalCosts)::{lambda(ngcore::TaskInfo&)#1}", calls: 2, size: 1.04, value: 1.04, min: 0.5136, max: 0.5262, avg: 0.5199} , { name: "ngcore::ParallelFor<ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(int)#8}>(ngcore::Partitioning const&,ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(int)#8},int)::{lambda(ngcore::TaskInfo&)#1}", calls: 1, size: 0.06442, value: 0.06442, min: 0.06442, max: 0.06442, avg: 0.06442} , { name: "MatrixGraph - CalcBalancing", calls: 1, size: 0.006672, value: 0.02995, min: 0.02995, max: 0.02995, avg: 0.02995, children: [{ name: "ngcore::Partitioning::Calc<ngla::MatrixGraph::CalcBalancing()::{lambda(int)#1}>(unsigned long,ngla::MatrixGraph::CalcBalancing()::{lambda(int)#1},int)::{lambda(ngcore::TaskInfo)#1}", calls: 1, size: 0.01788, value: 0.01788, min: 0.01788, max: 0.01788, avg: 0.01788} , { name: "ngcore::Partitioning::Calc<ngla::MatrixGraph::CalcBalancing()::{lambda(int)#1}>(unsigned long,ngla::MatrixGraph::CalcBalancing()::{lambda(int)#1},int)::{lambda(ngcore::TaskInfo)#2}", calls: 1, size: 0.005398, value: 0.005398, min: 0.005398, max: 0.005398, avg: 0.005398}]} , { name: "MatrixGraph - prefix", calls: 1, size: 0.001534, value: 0.02245, min: 0.02245, max: 0.02245, avg: 0.02245, children: [{ name: "ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(ngcore::TaskInfo)#6}", calls: 1, size: 0.00304, value: 0.00304, min: 0.00304, max: 0.00304, avg: 0.00304} , { name: "ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(ngcore::TaskInfo)#7}", calls: 1, size: 0.01787, value: 0.01787, min: 0.01787, max: 0.01787, avg: 0.01787}]} , { name: "MatrixGraph - build dof2el table", calls: 1, size: 0.01726, value: 0.5778, min: 0.5778, max: 0.5778, avg: 0.5778, children: [{ name: "ngcore::TablePrefixSum2<unsigned int>(ngcore::FlatArray<unsigned int,unsigned long>)::{lambda(ngcore::TaskInfo)#1}", calls: 1, size: 0.002626, value: 0.002626, min: 0.002626, max: 0.002626, avg: 0.002626} , { name: "ngcore::TablePrefixSum2<unsigned int>(ngcore::FlatArray<unsigned int,unsigned long>)::{lambda(ngcore::TaskInfo)#2}", calls: 1, size: 0.003744, value: 0.003744, min: 0.003744, max: 0.003744, avg: 0.003744} , { name: "ngcore::ParallelFor<unsigned long,ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(int)#2}>(ngcore::T_Range<unsigned long>,ngla::MatrixGraph::MatrixGraph(unsigned long,unsigned long,ngcore::FlatTable<int,unsigned long>,ngcore::FlatTable<int,unsigned long>,bool)::{lambda(int)#2},int,ngcore::TotalCosts)::{lambda(ngcore::TaskInfo&)#1}", calls: 2, size: 0.5542, value: 0.5542, min: 0.1891, max: 0.3651, avg: 0.2771}]}]}]}]};
+
+const chart_type = 'time';
+
+    const color = d3.scaleOrdinal(d3.schemePaired);
+
+    let getTime = (t) =>
+    {
+       if(t>=1000)  return (t/1000).toPrecision(4) + '  s';
+       if(t>=0.1)   return t.toPrecision(4) + ' ms';
+       if(t>=1e-4)  return (t*1e3).toPrecision(4) + ' us';
+
+       return (t/1e6).toPrecision(4) + ' ns';
+    };
+
+    const KB_ = 1024;
+    const MB_ = KB_*1024;
+    const GB_ = MB_*1024;
+    let getMemory = (m) =>
+    {
+       if(m>=GB_)  return (m/GB_).toPrecision(4) + ' GB';
+       if(m>=MB_)  return (m/MB_).toPrecision(4) + ' MB';
+       if(m>=KB_)  return (m/KB_).toPrecision(4) + ' KB';
+       return m.toPrecision(4) + ' B';
+    };
+
+    Sunburst()
+      .data(data)
+      .size('size')
+      .color(d => color(d.name))
+      .tooltipTitle((d, node) => { return node.parent ? node.parent.data.name + " &rarr; " + d.name : d.name; })
+      .tooltipContent((d, node) => {
+        if(chart_type=="memory")
+        {
+          return `Total Memory: <i>${getMemory(d.value)}</i> <br>`
+               + `Memory: <i>${getMemory(d.size)}</i>`
+        }
+        else
+        {
+          return `Time: <i>${getTime(d.value)}</i> <br>`
+               + `calls: <i>${d.calls}</i> <br>`
+               + `min: <i>${getTime(d.min)}</i> <br>`
+               + `max: <i>${getTime(d.max)}</i> <br>`
+               + `avg: <i>${getTime(d.avg)}</i>`
+        }
+      })
+      (document.getElementById('chart'));
+
+      // Line breaks in tooltip
+      var all = document.getElementsByClassName('sunbirst-tooltip');
+      for (var i = 0; i < all.length; i++) {
+          all[i].white_space = "";
+      }
+  </script>
+</body>
+
