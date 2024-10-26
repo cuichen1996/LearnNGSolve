@@ -12,7 +12,7 @@
 - [Teaching with NGSolve (S. Stingelin)](https://simonstingelin.github.io/NGSUserMeeting24)
 
 ## 进度
-`NGSolve24/tutorials/05_preconditioner.ipynb`
+`NGSolve24/Helmholtz`
 
 ## Add-on packages
 - ngsxfem
